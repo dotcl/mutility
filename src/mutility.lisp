@@ -1707,7 +1707,8 @@ See also: `asdf:defsystem'"
   #+lispworks (lw:function-lambda-list function)
   #+lucid (lcl:arglist function)
   #+sbcl (sb-introspect:function-lambda-list function)
-  #-(or allegro clisp cmu cormanlisp gcl lispworks lucid sbcl scl)
+  #+dotcl (values (dotcl:function-lambda-list function))
+  #-(or allegro clisp cmu cormanlisp gcl lispworks lucid sbcl scl dotcl)
   (error 'not-implemented :proc (list 'arglist function)))
 
 (defun systems-depending-on (system) ; see also: deptree; https://github.com/varjagg/deptree
